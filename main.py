@@ -22,7 +22,7 @@ paddle_w = 100
 paddle_h = 20
 paddle_speed = 15
 paddle = Paddle(WIN, WIDTH/2 - paddle_w/2, HEIGHT - paddle_h - 10, paddle_w, paddle_h, paddle_speed)
-FPS = 24
+FPS = 30
 
 
 game = Game(WIN, FPS, board_shape, SQ_SIZE, ball, paddle)
