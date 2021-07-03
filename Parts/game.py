@@ -61,6 +61,7 @@ class Game:
     def collision(self):
         if self.paddle.collision(self.ball):
             self.ball.speed_y *= -1
+            self.ball.y += self.ball.speed_y
 
         for row in range(self.board_shape[0]):
             for column in range(self.board_shape[1]):
@@ -84,14 +85,14 @@ class Game:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a] or keys[pygame.K_LEFT] or keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             if keys[pygame.K_a] or keys[pygame.K_LEFT]:
-                if self.paddle.x + self.paddle.speed > 0:
+                if self.paddle.x > 0:
                     if self.paddle.is_moving_right():
                         self.paddle.change_direction()
                         self.paddle.move()
                     else:
-                            self.paddle.move()
+                        self.paddle.move()
             elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
-                if self.paddle.x + self.paddle.w + self.paddle.speed + 10 <= self.WIDTH:
+                if self.paddle.x + self.paddle.w <= self.WIDTH:
                     if self.paddle.is_moving_right():
                         self.paddle.move()
                     else:
